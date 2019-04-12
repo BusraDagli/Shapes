@@ -30,7 +30,7 @@ public class SRectangle extends Shape {
 	}
 
 	public void translate(int dx, int dy) {
-		this.rect.setLocation(this.rect.getLocation().x + dx, this.rect.getLocation().y + dy);
+		this.rect.translate(dx,dy);
 	}
 
 	@Override

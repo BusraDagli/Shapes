@@ -37,7 +37,7 @@ public class SCircle extends Shape {
 
 	@Override
 	public void translate(int dx, int dy) {
-		this.loc.setLocation(this.loc.getLocation().x + dx, this.loc.getLocation().y + dy);
+		this.loc.translate(dx,dy);
 		
 	}
 
