@@ -91,7 +91,11 @@ public class ShapesController extends Controller {
 	}
 	
 	public boolean isSelected() {
-		return true;
+		if(this.s!=null) {
+			SelectionAttributes at = (SelectionAttributes) this.s.getAttributes("selectionattributes");
+			return at.isSelected();
+		}
+		return false;
 	}
 	
 	public void mousePressed(MouseEvent e)
@@ -157,13 +161,14 @@ public class ShapesController extends Controller {
 	}
 	
 	public void mouseDragged(MouseEvent evt) 
-	{
+	{	
 		
 		if(this.s!=null && isSelected()) {
-		this.translateSelected(evt.getX() - this.s.getLoc().x , evt.getY() - this.s.getLoc().y);
+		this.translateSelected(evt.getX() - this.cursor.x , evt.getY() - this.cursor.y);
+		this.cursor = evt.getPoint();
 		
-		this.getView().repaint();
 		}
+		this.getView().repaint();
 	}
 	
 	
