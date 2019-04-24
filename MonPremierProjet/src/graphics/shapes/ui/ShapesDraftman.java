@@ -118,8 +118,5 @@ public class ShapesDraftman implements ShapeVisitor {
 		
 	}
 
-	public void square() {
-//		ColorAttributes color = (ColorAttributes) r.getAttributes(ColorAttributes.id);
-		
-	}
+
 }
