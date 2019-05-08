@@ -137,8 +137,8 @@ public class ShapesDraftman implements ShapeVisitor {
 		}
 		if(((SelectionAttributes)tri.getAttributes("selectionattributes")).isSelected()) {
 			g.setColor(Color.BLACK);
-			g.drawRect(tri.getLoc().x-3, tri.getLoc().y-3, 3, 3);
-			g.drawRect(tri.getLoc().x + tri.getBounds().width, tri.getLoc().y - tri.getBounds().height, 3, 3);
+			g.drawRect(tri.getBounds().getLocation().x-3, tri.getBounds().getLocation().y-3, 3, 3);
+			g.drawRect(tri.getBounds().getLocation().x + tri.getBounds().width, tri.getBounds().getLocation().y + tri.getBounds().height, 3, 3);
 		}
 
 	}

@@ -69,6 +69,11 @@ public class Editor extends JFrame
 		tri.addAttributes(new SelectionAttributes());
 		this.model.add(tri);
 		
+		STriangle tri2 = new STriangle(new Point(50, 20), new Point(113,100), new Point(200,90),3);
+		tri2.addAttributes(new ColorAttributes(true,true,Color.blue,Color.ORANGE));
+		tri2.addAttributes(new SelectionAttributes());
+		this.model.add(tri2);
+		
 		SCollection sc = new SCollection();
 		sc.addAttributes(new SelectionAttributes());
 		r= new SRectangle(new Point(20,30),30,30);
