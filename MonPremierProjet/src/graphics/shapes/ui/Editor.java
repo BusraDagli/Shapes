@@ -4,6 +4,7 @@ import graphics.shapes.SCircle;
 import graphics.shapes.SCollection;
 import graphics.shapes.SRectangle;
 import graphics.shapes.SText;
+import graphics.shapes.STriangle;
 import graphics.shapes.attributes.ColorAttributes;
 import graphics.shapes.attributes.FontAttributes;
 import graphics.shapes.attributes.SelectionAttributes;
@@ -61,6 +62,12 @@ public class Editor extends JFrame
 		t.addAttributes(new FontAttributes());
 		t.addAttributes(new SelectionAttributes());
 		this.model.add(t);
+		
+		
+		STriangle tri = new STriangle(new Point(100, 200), new Point(180,100), new Point(250,150),3);
+		tri.addAttributes(new ColorAttributes(true,true,Color.blue,Color.ORANGE));
+		tri.addAttributes(new SelectionAttributes());
+		this.model.add(tri);
 		
 		SCollection sc = new SCollection();
 		sc.addAttributes(new SelectionAttributes());

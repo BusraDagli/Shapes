@@ -11,6 +11,7 @@ import graphics.shapes.SCircle;
 import graphics.shapes.SCollection;
 import graphics.shapes.SRectangle;
 import graphics.shapes.SText;
+import graphics.shapes.STriangle;
 import graphics.shapes.Shape;
 import graphics.shapes.ShapeVisitor;
 import graphics.shapes.attributes.ColorAttributes;
@@ -53,6 +54,7 @@ public class ShapesDraftman implements ShapeVisitor {
 			g.drawRect(r.getRect().x, r.getRect().y, r.getRect().width, r.getRect().height);		
 		}
 		if(((SelectionAttributes)r.getAttributes("selectionattributes")).isSelected()) {
+			g.setColor(Color.BLACK);
 			g.drawRect(r.getLoc().x-3, r.getLoc().y-3, 3, 3);
 			g.drawRect(r.getLoc().x+r.getRect().width, r.getLoc().y + r.getRect().height, 3, 3);
 		}
@@ -73,6 +75,7 @@ public class ShapesDraftman implements ShapeVisitor {
 		}
 
 		if(((SelectionAttributes)c.getAttributes("selectionattributes")).isSelected()) {
+			g.setColor(Color.BLACK);
 			g.drawRect(c.getLoc().x - 3, c.getLoc().y - 3, 3, 3);
 			g.drawRect(c.getLoc().x+c.getBounds().width, c.getLoc().y + c.getBounds().height, 3, 3);
 		}
@@ -98,6 +101,7 @@ public class ShapesDraftman implements ShapeVisitor {
 			g.drawString(t.getText(), t.getLoc().x, t.getLoc().y+ r.height);
 		}
 		if(((SelectionAttributes)t.getAttributes("selectionattributes")).isSelected()) {
+			g.setColor(Color.BLACK);
 			g.drawRect(t.getLoc().x -3, t.getLoc().y-3, 3, 3);
 			g.drawRect(t.getLoc().x+t.getBounds().width, t.getLoc().y + t.getBounds().height, 3, 3);
 		}
@@ -112,11 +116,30 @@ public class ShapesDraftman implements ShapeVisitor {
 			shape.accept(this);
 		}
 		if(((SelectionAttributes)co.getAttributes("selectionattributes")).isSelected()) {
+			g.setColor(Color.BLACK);
 			g.drawRect(co.getLoc().x-3, co.getLoc().y-3, 3, 3);
 			g.drawRect(co.getLoc().x+co.getBounds().width, co.getLoc().y + co.getBounds().height, 3, 3);
 		}
 		
 	}
+	
+	public void visitTriangle(STriangle tri) {
 
+		ColorAttributes color = (ColorAttributes) tri.getAttributes(ColorAttributes.id);
+		
+		if(color.filled == true) {
+			g.setColor(color.filledColor);
+			g.fillPolygon(new int[] {tri.getP1().x, tri.getP2().x, tri.getP3().x}, new int[] {tri.getP1().y, tri.getP2().y, tri.getP3().y}, 3);
+		}
+		if(color.stroked == true) {
+			g.setColor(color.strokedColor);
+			g.drawPolygon(new int[] {tri.getP1().x, tri.getP2().x, tri.getP3().x}, new int[] {tri.getP1().y, tri.getP2().y, tri.getP3().y}, 3);
+		}
+		if(((SelectionAttributes)tri.getAttributes("selectionattributes")).isSelected()) {
+			g.setColor(Color.BLACK);
+			g.drawRect(tri.getLoc().x-3, tri.getLoc().y-3, 3, 3);
+			g.drawRect(tri.getLoc().x + tri.getBounds().width, tri.getLoc().y - tri.getBounds().height, 3, 3);
+		}
 
+	}
 }
